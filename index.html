@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">    
+<head>
+    <meta charset="UTF-8">
+    <title>$ ‘‘shukuchhi‘‘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="weshh.ico" type="image/x-icon">
+    <style>
+        @font-face {
+            font-family: 'HussarBoldWeb.otf';
+            src: url('HussarBoldWeb.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            font-family: 'HussarBoldWeb.otf', sans-serif;
+            color: rgb(231, 231, 231);
+            text-align: center;
+        }
+
+        #background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: blur(12px);
+        }
+
+        .content {
+            z-index: 1;
+        }
+
+        .round {
+            border-radius: 75%;
+            box-shadow: 0 0 9px #80CBC4;
+            width: 175px;
+            display: block;
+            margin: 25px auto;
+        }
+
+        .button {
+            background-color: #0f0f0f;
+            border-radius: 30px;
+            border: 1px solid white;
+            color: white;
+            padding: 10px 30px;
+            font-size: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        .page_block .no_rows {
+                padding: 30px 50px
+            }
+
+            .audio-player {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 8px 15px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9em;
+            margin: 20px auto;
+            width: fit-content;
+        }
+
+        .audio-player .controls button {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-right: 10px;
+            padding: 0;
+        }
+
+        .audio-player .time {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .nickname {
+                font-size: 2em;
+            }
+            .tagline {
+                font-size: 1em;
+            }
+            .social-links a {
+                font-size: 1.5em;
+                margin: 0 10px;
+            }
+            .audio-player {
+                padding: 6px 12px;
+                font-size: 0.8em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div id="particles-js"></div>
+    <div id="border.css"></div>
+    <div class="content">
+        <img src="weshh.gif" alt="weshh_h" class="round">
+        <h1 class="gradientText">@shukuchhi</h1>
+
+        <style>
+        .gradientText {
+    background-image: linear-gradient(43deg, #A7FFEB 0%, #4DB6AC 33%, #00897B 67%, #004D40 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    animation: animated_gradient_text 16s ease-in-out infinite;
+    -moz-animation: animated_gradient_text 8s ease-in-out infinite;
+    -webkit-animation: animated_gradient_text 14s ease-in-out infinite;
+}
+
+@keyframes animated_gradient_text {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+        
+        </style>
+
+<style>
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 0;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: #bdbdbd;
+    font-size: 24px;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.social-links a:hover {
+    color: #4DB6AC;
+    text-shadow: 0 0 10px rgba(255, 111, 97, 0.6);
+}
+
+@media (max-width: 768px) {
+    #background-video {
+        filter: blur(6px);
+    }
+}
+
+@media (max-width: 480px) {
+    #background-video {
+        filter: blur(4px);
+    }
+}
+
+
+</style>
+
+<style>
+    #visitor-count {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+    }
+</style>
+
+
+<div id="visitor-count">
+    Unique Visits: 0
+</div>
+
+<script>
+    console.log('app.js loaded');
+
+    function updateVisitorCount() {
+        console.log('updateVisitorCount called');
+        const timestamp = new Date().getTime();
+        fetch(`counter.php?t=${timestamp}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log('Data received:', data);
+                const visitorCountElement = document.getElementById('visitor-count');
+                if (visitorCountElement) {
+                    visitorCountElement.textContent = `Unique Visits: ${data.count}`;
+                }
+            })
+            .catch(error => console.error('Error updating visitor count:', error));
+    }
+
+    window.addEventListener('load', updateVisitorCount);
+</script>
+
+
+            <div class="social-links">
+                <a href="https://t.me/shukuchhi" target="_blank">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="https://discord.gg/J7pgap6DnX" target="_blank">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.tiktok.com/@MS4wLjABAAAAy3PKB4ryxcopjzLv7H2qSlEDzNHuIECTvVU_CMf3dHzKz28W7rQiHbeE-ndiNDCu?_t=ZM-8xkJrUff67c&_r=1" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+            </div>
+
+    <script src="app.js"></script>
+    <script src="main.js"></script>
+    <script src="audio-player.js"></script>
+    <script src="animated-text.js"></script>
+
+    <div class="background-container">
+        <video id="background-video" autoplay muted loop>
+            <source src="rec.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="audio-player">
+        <audio id="audio" src="weshh.mp3"></audio>
+        <div class="controls">
+            <button id="playPauseBtn" aria-label="Play/Pause">
+                <i class="fa fa-play"></i>
+            </button>
+            <div class="time">
+                <span id="currentTime">00:00</span> /
+                <span id="duration">00:00</span>
+            </div>
+        </div>
+    </div>
+    <div class="animated-text">
+        <div class="js--text-cont1"></div>
+        <div class="js--text-cont2"></div>
+    </div>
+
+</body>
+</html>
